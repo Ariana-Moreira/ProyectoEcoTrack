@@ -4,19 +4,20 @@
  */
 package com.ecotrack.ed_p3_grupo7.datos;
 
+import java.time.LocalDate;
 /**
  *
  * @author arianamoreira
  */
 public class Residuo {
     //Atributos
-    String id;
-    String nombre;
-    String tipoResiduo; // organicos,plasticos,vidrio,etc
-    double peso;
-    //Date fechaRecoleccion;
-    Zona zona;
-    int nivelPrioridad;
+    private String id;
+    private String nombre;
+    private String tipoResiduo; // organicos,plasticos,vidrio,etc
+    private double peso;
+    private LocalDate fechaRecoleccion;
+    private Zona zona;
+    private int nivelPrioridad;
     
     public Residuo(String id, String nombre, double peso, String tipo, Zona zona, int prioridad){
         this.id = id;
@@ -25,6 +26,7 @@ public class Residuo {
         this.peso = peso;
         this.tipoResiduo = tipo;
         this.zona = zona;
+        this.fechaRecoleccion = LocalDate.now();
     }
     
     public double getPeso(){
@@ -69,8 +71,20 @@ public class Residuo {
         return zona;
     }
     
+    public LocalDate getFechaRecoleccion(){
+        return fechaRecoleccion;
+    }
+    public LocalDate setFechaRecoleccion(){
+        return fechaRecoleccion;
+    }
+    
     @Override
     public String toString(){
         return "ID del Residuo: "+id+ ",Tipo: " +tipoResiduo+ ", Peso: "+peso+ " kg, Zona: " + zona.getNombre(); 
+    }
+    
+    @Override
+    public int compareTo(Residuo otro){
+        return this.id.compareTo(otro.id);
     }
 }
