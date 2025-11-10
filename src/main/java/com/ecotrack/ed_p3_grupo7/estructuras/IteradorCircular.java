@@ -14,5 +14,5 @@ public class IteradorCircular implements Iterator<E> {
 
     public IteradorCircular() {
     }
-    
+    //En proceso
 }

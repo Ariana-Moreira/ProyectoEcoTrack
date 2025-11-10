@@ -14,5 +14,5 @@ public class SistemaEcoTrack {
     Analiza la distribucion y acumulacion de residuos
     funcion de utilidad = Rcolectads- Rpendientes
     */
-    
+    //En proceso
 }

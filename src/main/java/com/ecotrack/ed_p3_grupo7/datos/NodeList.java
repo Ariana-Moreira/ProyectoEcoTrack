@@ -23,6 +23,7 @@ public class NodeList<E> {
     
     public E setContenido(E contenido){
         this.contenido = contenido;
+        return null;
     }
     
     public NodeList<E> getSiguiente(){
@@ -32,6 +33,4 @@ public class NodeList<E> {
     public void setSiguiente(NodeList<E> siguiente){
         this.siguiente = siguiente;
     }
-    
-    
 }
