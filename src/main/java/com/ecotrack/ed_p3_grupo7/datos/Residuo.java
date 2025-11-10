@@ -5,11 +5,12 @@
 package com.ecotrack.ed_p3_grupo7.datos;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 /**
  *
  * @author arianamoreira
  */
-public class Residuo {
+public class Residuo implements Comparable<Residuo>, Serializable{
     //Atributos
     private String id;
     private String nombre;
@@ -18,6 +19,8 @@ public class Residuo {
     private LocalDate fechaRecoleccion;
     private Zona zona;
     private int nivelPrioridad;
+    
+    private static final long serialVersion = 1L;
     
     public Residuo(String id, String nombre, double peso, String tipo, Zona zona, int prioridad){
         this.id = id;

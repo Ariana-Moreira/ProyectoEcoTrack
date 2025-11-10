@@ -4,8 +4,8 @@
  */
 package com.ecotrack.ed_p3_grupo7.estructuras;
 
-import com.ecotrack.ed_p3_grupo7.datos.NodeList;
 import java.util.Iterator;
+
 /**
  *
  * @author arianamoreira
@@ -13,59 +13,40 @@ import java.util.Iterator;
 public class ListEnlazada<E> implements Iterable<E> {
     private NodeList<E> cabeza;
     private int longitud;
-    
     public ListEnlazada(){
         cabeza = null;
         longitud = 0;
     }
-    
-    //Metodos basicos
-    
     public boolean estaVacia(){
         return cabeza == null;
     }
-    
     public void agregar(E dato){
-        NodeList<E> nuevoNodo = NodeList<>(dato);
+        NodeList<E> nuevoNodo = new NodeList<>(dato);
         if(estaVacia()){
             cabeza = nuevoNodo;
             cabeza.setSiguiente(cabeza);
+            cabeza.setAnterior(cabeza);
         }else{
-            NodeList<E> actual = cabeza;
-            while(actual.getSiguiente() != cabeza){
-                actual = actual.getSiguiente();
-            }
-            actual.setSiguiente(nuevoNodo);
+            NodeList<E> ulti = cabeza.getAnterior();
+            
             nuevoNodo.setSiguiente(cabeza);
+            nuevoNodo.setAnterior(ulti);
+            
+            ulti.setSiguiente(nuevoNodo);
+            cabeza.setAnterior(nuevoNodo);
         }
         longitud ++;
     }
     @Override 
     public Iterator<E> iterator(){
-        return new IteradorCircular();
+        return new IteradorCircular(cabeza, longitud);
     }
     
-    private class IteradorCicular implements Iterator<E>{
-        private NodeList<E> actual;
-        private boolean primerIteracion = true;
-        
-        public IteradorCircular(){
-            actual = actual;
-        }
-        @Override
-        public boolean hasNext(){
-            return !estaVacia() && (actual != cabeza || primerIteracion);
-        }
-        
-        @Override
-        public E next(){
-            if (!hasNext()){
-                throw new java.util.NoSuchElementException();
-            }
-            E dato = actual.getDato();
-            actual = actual.getSiguiente();
-            primerIteracion = false;
-            return dato;
-        }
+    public int getLongitud(){
+        return longitud;
+    }
+    
+    public NodeList<E> getCabeza(){
+        return cabeza;
     }
 }

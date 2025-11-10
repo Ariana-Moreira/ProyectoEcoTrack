@@ -37,7 +37,12 @@ public class Zona { // la zona urbana u su prioridad
             pesoPendiente -= peso;
             pesoRecolectado += peso;
             calcularUtilidad();
+        }else {
+             this.pesoRecolectado += this.pesoPendiente;
+             this.pesoPendiente = 0.0;
+             calcularUtilidad();
         }
+        
     }
     
     public double getUtilidad(){
@@ -46,28 +51,24 @@ public class Zona { // la zona urbana u su prioridad
     public double setUtilidad(){
         return utilidad;
     }
-    
     public String getID(){
         return id;
     }
     public String setID(){
         return id;
     }
-    
     public String getNombre(){
         return nombre;
     }
     public String setNombre(){
         return nombre;
     }
-    
     public double getPesoRecolectado(){
         return pesoRecolectado;
     }
     public double setPesoRecolectado(){
         return pesoRecolectado;
     }
-    
     public double getPesoPendiente(){
         return pesoPendiente;
     }
